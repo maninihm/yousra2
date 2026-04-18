@@ -6,42 +6,165 @@
   <title>Pour toi ya cheba</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Raleway:wght@300;400;600&display=swap');
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      min-height:100vh;overflow:scroll;background:radial-gradient(circle at top,#1a1a2e 0%,#0a0a0f 60%,#050508 100%);
-      color:#f7e7ef;font-family:'Raleway',sans-serif;position:relative
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      overflow-y: auto;
+      background: radial-gradient(circle at top, #1a1a2e 0%, #0a0a0f 60%, #050508 100%);
+      color: #f7e7ef;
+      font-family: 'Raleway', sans-serif;
+      position: relative;
+      padding: 20px;
     }
-    .stars,.hearts{position:fixed;inset:0;pointer-events:none;opacity:0.15}
-    .star{position:absolute;background:#fff;border-radius:50%;animation:tw 3s infinite alternate;opacity:.2}
-    @keyframes tw{from{transform:scale(1);opacity:.15}to{transform:scale(1.6);opacity:1}}
-    .heart{position:absolute;bottom:-40px;animation:up linear infinite;opacity:.5}
-    @keyframes up{from{transform:translateY(0) rotate(0deg)}to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
-    .card{
-      width:min(800px,90%);margin:30px auto;padding:36px 26px 30px;text-align:center;
-      background:rgba(18,18,28,.72);border:1px solid rgba(255,120,160,.18);border-radius:26px;
-      backdrop-filter:blur(14px);box-shadow:0 15px 50px rgba(0,0,0,.55),0 0 60px rgba(255,90,140,.12)
+    .stars, .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.15;
     }
-    .gif-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
-    .gif{width:160px;height:160px;object-fit:cover;border-radius:20px;box-shadow:0 0 18px rgba(255,90,140,.2);animation:float 4s ease-in-out infinite}
-    .gif:nth-child(2){animation-delay:.7s}.gif:nth-child(3){animation-delay:1.2s}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-    h1{font-family:'Dancing Script',cursive;font-size:clamp(2.4rem,6vw,4rem);color:#ff8db3;text-shadow:0 0 18px rgba(255,141,179,.5);margin-bottom:10px}
-    .sub{font-size:1rem;line-height:1.8;color:#e9d0dc;margin-bottom:18px}
-    .btn-row{margin:18px 0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-    .opt{
-      border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:11px 16px;cursor:pointer;
-      background:linear-gradient(135deg,#333345,#252532);color:#e9d0dc;font-size:.95rem;
-      box-shadow:0 4px 10px rgba(0,0,0,.3);transition:.2s ease
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      animation: tw 3s infinite alternate;
+      opacity: 0.2;
     }
-    .opt.active{border-color:#ff8db3;background:linear-gradient(135deg,#3a1c29,#4d2637);color:#ffdded;box-shadow:0 0 18px rgba(255,141,179,.35)}
-    .msg{margin-top:26px;text-align:left;background:rgba(0,0,0,.45);padding:24px;border-radius:20px;border-left:5px solid #ff4d7d;animation:ap 0.6s ease;opacity:0;transform:translateY(10px)}
-    .msg.show{opacity:1;transform:translateY(0)}
-    @keyframes ap{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-    .msg h2{font-family:'Dancing Script',cursive;font-size:2rem;color:#ff8db3;text-align:center;margin-bottom:14px}
-    .msg p{white-space:pre-line;line-height:1.95;font-size:1.05rem;color:#ffe9f2}
-    .line{display:block;opacity:0;transform:translateY(8px);animation:lineIn .45s ease forwards}
-    @keyframes lineIn{to{opacity:1;transform:translateY(0)}}
-    .small{margin-top:14px;text-align:center;color:#cbb8c2;font-size:.95rem}
+    @keyframes tw {
+      from { transform: scale(1); opacity: 0.15; }
+      to { transform: scale(1.6); opacity: 1; }
+    }
+    .heart {
+      position: absolute;
+      bottom: -40px;
+      animation: up linear infinite;
+      opacity: 0.5;
+    }
+    @keyframes up {
+      from { transform: translateY(0) rotate(0deg); }
+      to { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+    }
+    .card {
+      width: min(800px, 95%);
+      margin: 30px auto;
+      padding: 36px 26px 30px;
+      text-align: center;
+      background: rgba(18, 18, 28, 0.72);
+      border: 1px solid rgba(255, 120, 160, 0.18);
+      border-radius: 26px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.55), 0 0 60px rgba(255,90,140,0.12);
+    }
+    .gif-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .gif {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 0 18px rgba(255,90,140,0.2);
+      animation: float 4s ease-in-out infinite;
+    }
+    .gif:nth-child(2) { animation-delay: 0.7s; }
+    .gif:nth-child(3) { animation-delay: 1.2s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      color: #ff8db3;
+      text-shadow: 0 0 18px rgba(255,141,179,0.5);
+      margin-bottom: 10px;
+    }
+    .sub {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #e9d0dc;
+      margin-bottom: 18px;
+    }
+    .btn-row {
+      margin: 18px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .opt {
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 18px;
+      padding: 11px 16px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #333345, #252532);
+      color: #e9d0dc;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: 0.2s ease;
+      font-family: 'Raleway', sans-serif;
+    }
+    .opt:hover {
+      transform: translateY(-2px);
+    }
+    .opt.active {
+      border-color: #ff8db3;
+      background: linear-gradient(135deg, #3a1c29, #4d2637);
+      color: #ffdded;
+      box-shadow: 0 0 18px rgba(255,141,179,0.35);
+    }
+    .msg {
+      margin-top: 26px;
+      text-align: left;
+      background: rgba(0,0,0,0.45);
+      padding: 24px;
+      border-radius: 20px;
+      border-left: 5px solid #ff4d7d;
+      animation: ap 0.6s ease;
+      opacity: 0;
+      transform: translateY(10px);
+      display: none;
+    }
+    .msg.show {
+      opacity: 1;
+      transform: translateY(0);
+      display: block;
+    }
+    @keyframes ap {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .msg h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: #ff8db3;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .msg p {
+      white-space: pre-line;
+      line-height: 1.95;
+      font-size: 1.05rem;
+      color: #ffe9f2;
+    }
+    .line {
+      display: block;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: lineIn 0.45s ease forwards;
+    }
+    @keyframes lineIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .small {
+      margin-top: 14px;
+      text-align: center;
+      color: #cbb8c2;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
@@ -58,12 +181,12 @@
     <h1>Pour toi ya cheba 😭😭</h1>
     <div class="sub">Aujourd'hui, je veux juste te donner un gros câlin virtuel, beaucoup de douceur, et un peu de lumière pour ton cœur.</div>
 
-    <div class="btn-row" id="theme">
-      <button class="opt" onclick="showMessage('dou')" data-action="dou">Doux ❤️</button>
-      <button class="opt" onclick="showMessage('fort')" data-action="fort">Fort et sincère 💪</button>
-      <button class="opt" onclick="showMessage('dr')" data-action="dr">Drôle et léger 😂</button>
-      <button class="opt" onclick="showMessage('tout')" data-action="tout">Tout ensemble 🌈</button>
-      <button class="opt" onclick="showMessage('pourquoi')" data-action="pourquoi">Pourquoi tu devrais être heureuse 🌟</button>
+    <div class="btn-row">
+      <button class="opt" data-kind="dou">Doux ❤️</button>
+      <button class="opt" data-kind="fort">Fort et sincère 💪</button>
+      <button class="opt" data-kind="dr">Drôle et léger 😂</button>
+      <button class="opt" data-kind="tout">Tout ensemble 🌈</button>
+      <button class="opt" data-kind="pourquoi">Pourquoi tu devrais être heureuse 🌟</button>
     </div>
 
     <div class="msg" id="msg">
@@ -74,69 +197,120 @@
   </div>
 
   <script>
-    const stars=document.getElementById('stars');
-    for(let i=0;i<140;i++){
-      const s=document.createElement('div');s.className='star';
-      const size=Math.random()*2.4+.5;
-      s.style.width=s.style.height=size+'px';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
-      s.style.animationDelay=Math.random()*3+'s';s.style.animationDuration=(Math.random()*3+2)+'s';
-      stars.appendChild(s)
-    }
-    const hearts=document.getElementById('hearts');
-    const em=['❤️','🖤','💗','✨','🌷'];
-    for(let i=0;i<18;i++){
-      const h=document.createElement('div');h.className='heart';h.textContent=em[Math.floor(Math.random()*em.length)];
-      h.style.left=Math.random()*100+'%';h.style.fontSize=(Math.random()*1.2+.8)+'em';
-      h.style.animationDuration=(Math.random()*8+6)+'s';h.style.animationDelay=Math.random()*8+'s';
-      hearts.appendChild(h)
+    // Étoiles
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 140; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      const size = Math.random() * 2.4 + 0.5;
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.animationDelay = Math.random() * 3 + 's';
+      s.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      starsContainer.appendChild(s);
     }
 
-    const opts={
-      d:['Doucement, mon cœur. Tu n'as pas besoin d'être forte tout le temps, tu as le droit de souffler. Tu es précieuse exactement comme tu es, même aujourd'hui.'],
-      f:['Je sais que tu ne vas pas bien, mais je veux juste que tu saches que je crois vraiment en toi. Tu es forte, même si tu ne t'en rends pas compte tout de suite.'],
-      dr:['Allez, arrête de faire la triste, tu sais que tu es la plus belle personne dans ma vie, même quand tu boude.'],
-      tout:[
-        'Doucement, mon cœur, tu n'as pas besoin d'être forte tout le temps, tu as le droit de souffler.\n\n',
-        'Tu es précieuse exactement comme tu es, même aujourd'hui, même dans le bazar de ton cerveau, même quand tu doutes de toi.\n\n',
-        'Je sais que tu ne vas pas bien, mais je veux juste que tu saches que je crois vraiment en toi.\n\n',
-        'Tu es forte, même si tu ne t'en rends pas compte tout de suite, parce que tu continues à avancer malgré tout.\n\n',
-        'Alors je t'envoie un gros câlin, un peu de lumière, et un peu de tout : douceur, sincérité, et un peu de rire pour te faire sourire même si tu ne veux pas.\n\n',
-        'Tu es vraiment précieuse, et je serai là, aujourd'hui comme toujours, même quand tu es de mauvais mood.\n\n'
+    // Cœurs
+    const heartsContainer = document.getElementById('hearts');
+    const em = ['❤️', '🖤', '💗', '✨', '🌷'];
+    for (let i = 0; i < 18; i++) {
+      const h = document.createElement('div');
+      h.className = 'heart';
+      h.textContent = em[Math.floor(Math.random() * em.length)];
+      h.style.left = Math.random() * 100 + '%';
+      h.style.fontSize = (Math.random() * 1.2 + 0.8) + 'em';
+      h.style.animationDuration = (Math.random() * 8 + 6) + 's';
+      h.style.animationDelay = Math.random() * 8 + 's';
+      heartsContainer.appendChild(h);
+    }
+
+    // Contenu des messages
+    const opts = {
+      dou: [
+        'Doucement, mon cœur. Tu n\'as pas besoin d\'être forte tout le temps, tu as le droit de souffler. Tu es précieuse exactement comme tu es, même aujourd\'hui.'
       ],
-      pourquoi:[
+      fort: [
+        'Je sais que tu ne vas pas bien, mais je veux juste que tu saches que je crois vraiment en toi. Tu es forte, même si tu ne t\'en rends pas compte tout de suite.'
+      ],
+      dr: [
+        'Allez, arrête de faire la triste, tu sais que tu es la plus belle personne dans ma vie, même quand tu boude.'
+      ],
+      tout: [
+        'Doucement, mon cœur, tu n\'as pas besoin d\'être forte tout le temps, tu as le droit de souffler.\n\n',
+        'Tu es précieuse exactement comme tu es, même aujourd\'hui, même dans le bazar de ton cerveau, même quand tu doutes de toi.\n\n',
+        'Je sais que tu ne vas pas bien, mais je veux juste que tu saches que je crois vraiment en toi.\n\n',
+        'Tu es forte, même si tu ne t\'en rends pas compte tout de suite, parce que tu continues à avancer malgré tout.\n\n',
+        'Alors je t\'envoie un gros câlin, un peu de lumière, et un peu de tout : douceur, sincérité, et un peu de rire pour te faire sourire même si tu ne veux pas.\n\n',
+        'Tu es vraiment précieuse, et je serai là, aujourd\'hui comme toujours, même quand tu es de mauvais mood.\n\n'
+      ],
+      pourquoi: [
         'Tu devrais être heureuse parce que tu es gentille, même quand tu souffres, tu continues à faire des efforts pour les autres.\n\n',
         'Tu devrais être heureuse parce que tu es intelligente, drôle, et pleine de choses qui te rendent unique — tu ne le vois peut-être pas, mais moi je le vois très bien.\n\n',
         'Tu devrais être heureuse parce que tu fais partie de la vie de personnes qui tiennent à toi, et qui aimeraient te voir sourire tous les jours.\n\n',
         'Tu devrais être heureuse, même peu à peu, parce que tu as le droit de profiter de la vie, de te sentir en sécurité, et de ne pas te punir quand tu es fatiguée.\n\n',
-        'Alors, petit pas par petit pas, je t'encourage à te rappeler tout ça, à accepter d'être heureuse, même si c'est discret aujourd'hui.\n\n'
+        'Alors, petit pas par petit pas, je t\'encourage à te rappeler tout ça, à accepter d\'être heureuse, même si c\'est discret aujourd\'hui.\n\n'
       ]
     };
-    const btns=document.querySelectorAll('.opt');
-    function showMessage(id){
-      btns.forEach(b=>b.classList.remove('active'));
-      const activeBtn = document.querySelector(`[data-action="${id}"]`);
-      if(activeBtn) activeBtn.classList.add('active');
-      const m=document.getElementById('msg');m.classList.remove('show');
-      const t=document.getElementById('msgTitle');
-      const p=document.getElementById('poem');p.innerHTML='';
-      const s=document.getElementById('small');
 
-      if(id==='dou'){t.textContent='Doux comme un câlin';s.textContent='Respire un peu, tu es à l'abri là, je suis avec toi 🌙';}
-      else if(id==='fort'){t.textContent='Fort et sincère';s.textContent='Je le dis sans fard : tu es plus forte que tu ne penses. 💪';}
-      else if(id==='dr'){t.textContent='Drôle mais gentil';s.textContent='Je t'envoie du rire, parce que tu mérites de sourire, même si tu ne veux pas. 😂';}
-      else if(id==='tout'){t.textContent='Un peu de tout';s.textContent='Un mélange de douceur, de sincérité et de rire, juste pour toi. 🌈';}
-      else if(id==='pourquoi'){t.textContent='Pourquoi tu devrais être heureuse 🌟';s.textContent='Parce que tu le mérites, même si tu en doutes aujourd'hui. 💫';}
+    // Titres et petites phrases
+    const titles = {
+      dou: 'Doux comme un câlin',
+      fort: 'Fort et sincère',
+      dr: 'Drôle mais gentil',
+      tout: 'Un peu de tout',
+      pourquoi: 'Pourquoi tu devrais être heureuse 🌟'
+    };
+    const smalls = {
+      dou: 'Respire un peu, tu es à l\'abri là, je suis avec toi 🌙',
+      fort: 'Je le dis sans fard : tu es plus forte que tu ne penses. 💪',
+      dr: 'Je t\'envoie du rire, parce que tu mérites de sourire, même si tu ne veux pas. 😂',
+      tout: 'Un mélange de douceur, de sincérité et de rire, juste pour toi. 🌈',
+      pourquoi: 'Parce que tu le mérites, même si tu en doutes aujourd\'hui. 💫'
+    };
 
-      const lines=opts[id];
-      lines.forEach((txt,i)=>{
-        const span=document.createElement('span');
-        span.className='line';
-        span.style.animationDelay=(i*.15)+'s';
-        span.textContent=txt;
-        p.appendChild(span);
+    const msgDiv = document.getElementById('msg');
+    const msgTitle = document.getElementById('msgTitle');
+    const poem = document.getElementById('poem');
+    const small = document.getElementById('small');
+    const buttons = document.querySelectorAll('.opt');
+
+    function showMessage(kind) {
+      buttons.forEach(b => b.classList.remove('active'));
+      buttons.forEach(b => {
+        if (b.getAttribute('data-kind') === kind) {
+          b.classList.add('active');
+        }
       });
-      setTimeout(()=>m.classList.add('show'),20);
+
+      msgDiv.classList.remove('show');
+
+      msgTitle.textContent = titles[kind];
+      small.textContent = smalls[kind];
+
+      poem.innerHTML = '';
+      const lines = opts[kind] || [];
+      lines.forEach((txt, i) => {
+        const span = document.createElement('span');
+        span.className = 'line';
+        span.style.animationDelay = (i * 0.15) + 's';
+        span.textContent = txt;
+        poem.appendChild(span);
+      });
+
+      setTimeout(() => {
+        msgDiv.classList.add('show');
+      }, 30);
     }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const kind = btn.getAttribute('data-kind');
+        showMessage(kind);
+      });
+    });
+
     showMessage('dou');
   </script>
 </body>
